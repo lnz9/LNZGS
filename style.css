@@ -1,0 +1,724 @@
+/* Reset default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Gunakan font yang lebih elegan */
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header styles */
+header {
+    background-color: #e0e2e4;
+    color: rgb(0, 0, 0);
+    padding: 13px 0;
+    position: fixed; /* Fixed position for the header */
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s, padding 0.3s; /* Smooth transition */
+    z-index: 1000; /* Ensure header stays on top */
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-size: 2.5rem; /* Use rem units for better scalability */
+    font-weight: bold;
+    transition: font-size 0.3s; /* Smooth transition for font size */
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1rem; /* Use rem units */
+    font-weight: 500; /* Slightly bolder font for better visibility */
+    transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Change color on hover */
+}
+
+.hamburger {
+    display: none; /* Hidden by default */
+    font-size: 1.5rem; /* Use rem units */
+    cursor: pointer;
+}
+
+/* Menu Toggle Styles */
+.navbar.active {
+    display: block; /* Show menu when active */
+}
+
+/* Scroll Effect */
+.header-scrolled {
+    background-color: #dbdddf; /* Change background color when scrolled */
+    padding: 6px 0; /* Adjust padding when scrolled */
+}
+
+.header-scrolled .logo h1 {
+    font-size: 2rem; /* Smaller font size when scrolled */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* Hide navbar by default on small screens */
+        flex-direction: column;
+        width: 100%;
+        background-color: #e0e2e4;
+        position: absolute;
+        top: 60px; /* Positioning below the header */
+        left: 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger icon on small screens */
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo h1 {
+        font-size: 2rem;
+    }
+
+    .navbar ul li a {
+        font-size: 0.875rem; /* Adjust font size for smaller screens */
+    }
+
+    .product-container {
+        grid-template-columns: repeat(2, 1fr); /* Maintain two columns on medium screens */
+    }
+
+    .card {
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .card-img {
+        height: 150px; /* Adjust image height for smaller screens */
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 0.875rem;
+    }
+
+    .checkout-container {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.75rem; /* Adjust font size for very small screens */
+    }
+
+    .hero span {
+        font-size: calc(1rem + 1vw); /* Menyesuaikan ukuran font berdasarkan lebar viewport */
+        line-height: 1.4;
+        white-space: pre-wrap; /* Memastikan baris baru dipertahankan */
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr; /* Single column layout on very small screens */
+    }
+
+    .card-img {
+        height: 120px; /* Reduce image height for very small screens */
+    }
+
+    .member {
+        width: 100%; /* Full width for small screens */
+        max-width: none; /* Remove max-width for small screens */
+    }
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+.hero h2 {
+    font-size: 2.25rem; /* Use rem units */
+    margin-bottom: 10px;
+    color: #333;
+    animation: slideInFromTop 1s ease-out; /* Slide-in animation */
+}
+
+.hero p {
+    font-size: 1.125rem; /* Use rem units */
+    color: #555;
+}
+
+/* Divider styles */
+.divider {
+    border: 0;
+    border-top: 2px solid #0056b3; /* Color of the divider line */
+    margin: 20px auto;
+    width: 80%;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Product container styles */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid with flexible column sizes */
+    gap: 20px; /* Space between cards */
+}
+
+/* Card styles */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center; /* Center align text within card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and box-shadow */
+    animation: cardFadeIn 0.5s ease-out; /* Fade-in animation for cards */
+}
+
+.card-img {
+    width: 100%;
+    height: 200px; /* Fixed height for image */
+    object-fit: cover; /* Ensure image covers area */
+    display: block;
+    transition: transform 0.3s ease; /* Smooth transition for image */
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 1.125rem; /* Use rem units */
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-price {
+    font-size: 1rem; /* Use rem units */
+    color: #333;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Move card up slightly */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow size */
+}
+
+.card-img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Checkout container styles */
+.checkout-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    animation: slideInFromBottom 0.5s ease-out; /* Slide-in animation for checkout container */
+}
+
+/* Checkout card styles */
+.product-card {
+    background-color: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Form card styles */
+.form-card {
+    background-color: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button styles */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem; /* Use rem units */
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background color and text color */
+    animation: btnPulse 1.5s infinite; /* Pulse animation */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #fff; /* Change text color on hover */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo h1 {
+        font-size: 1.75rem;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar ul li a {
+        font-size: 0.875rem;
+    }
+
+    .product-container {
+        grid-template-columns: repeat(2, 1fr); /* Maintain two columns on medium screens */
+    }
+
+    .card {
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .card-img {
+        height: 150px; /* Adjust image height for smaller screens */
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 0.875rem;
+    }
+
+    .checkout-container {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.5rem; /* Adjust font size for very small screens */
+    }
+
+    .hero p {
+        font-size: 0.875rem;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr; /* Single column layout on very small screens */
+    }
+
+    .card-img {
+        height: 120px; /* Reduce image height for very small screens */
+    }
+}
+
+/* Bagian Tim */
+/* Bagian Tim */
+.pic img {
+    width: 100px; /* Sesuaikan ukuran jika diperlukan */
+    height: 100px; /* Sesuaikan ukuran jika diperlukan */
+    border-radius: 50%;
+    object-fit: cover; /* Memastikan gambar terpotong dengan benar */
+    transition: transform 0.3s; /* Smooth transition for image */
+}
+
+.member-info h4 {
+    margin: 0;
+    font-size: 1.25rem; /* Use rem units */
+    color: #000000;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.member-info h4 .verified-icon {
+    width: 12px; /* Ukuran ikon verifikasi yang lebih kecil */
+    height: 12px; /* Ukuran ikon verifikasi yang lebih kecil */
+    margin-left: 10px; /* Jarak antara nama dan ikon */
+}
+
+.team-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation for team section */
+}
+
+.team-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.25rem; /* Use rem units */
+    color: #000000;
+    animation: slideInFromTop 1s ease-out; /* Slide-in animation */
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Card anggota tim */
+.member {
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: calc(50% - 20px); /* Dua card per baris dengan penyesuaian jarak */
+    max-width: 500px; /* Lebar maksimum card */
+    margin-bottom: 20px; /* Jarak antara baris */
+    animation: fadeIn 0.8s ease-in-out; /* Fade-in animation for team cards */
+}
+
+.member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect on hover */
+}
+
+.pic {
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Smooth transition for image */
+}
+
+.member-info {
+    flex: 1;
+}
+
+.member-info h4 {
+    font-size: 1.25rem; /* Use rem units */
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.member-info span {
+    display: block;
+    font-size: 0.875rem; /* Use rem units */
+    font-weight: 500;
+    margin: 5px 0;
+    color: #666;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.member-info span::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 1px;
+    background: #cbd6e9;
+}
+
+.social {
+    margin-top: 10px;
+}
+
+.social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Ukuran ikon sosial media */
+    height: 28px; /* Ukuran ikon sosial media */
+    border-radius: 50%;
+    background: #eff2f8;
+    margin-right: 8px;
+    transition: background 0.3s, color 0.3s;
+    text-decoration: none; /* Menghapus garis bawah dari ikon sosial media */
+}
+
+.social a i {
+    color: #37517e;
+    font-size: 14px; /* Ukuran ikon sosial media */
+}
+
+.social a:hover {
+    background: #47b2e4;
+}
+
+.social a:hover i {
+    color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes btnPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design for Team Section */
+@media (max-width: 768px) {
+    .member {
+        width: 100%; /* Full width for small screens */
+        max-width: none; /* Remove max-width for small screens */
+    }
+
+    .pic {
+        margin-bottom: 15px;
+    }
+}
+
+/* Typing animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+#typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid orange; /* Cursor style */
+    font-family: 'Courier New', Courier, monospace; /* Font style */
+    font-size: 18px;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+/* Cursor blinking animation */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
+
+.typing-text {
+    display: block;
+    font-size: calc(1rem + 1vw); /* Menyesuaikan ukuran font */
+    line-height: 1.4;
+    white-space: pre-wrap; /* Memastikan baris baru dipertahankan */
+    overflow: hidden; /* Menghindari teks yang meluap */
+    height: auto; /* Pastikan tinggi elemen cukup untuk teks */
+}
+
+/* Overlay to darken the background */
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+}
+
+#popup-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.popup-btn {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.popup-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* Popup content */
+#popup-content {
+    text-align: center;
+}
+
+/* Popup image */
+#popup-image {
+    max-width: 100%;
+    border: 2px solid #bbbdc0; /* Blue border */
+    border-radius: 8px;
+}
+
+/* Popup title */
+#popup-title {
+    font-size: 1.5rem;
+    color: #000;
+    margin: 10px 0;
+}
+
+/* Popup subtitle */
+#popup-subtitle {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Banner inside popup */
+#popup-banner {
+    border: none; /* Blue border */
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Center buttons in the banner */
+#popup-banner .popup-btn {
+    margin: 0 10px;
+}
